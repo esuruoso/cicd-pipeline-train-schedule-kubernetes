@@ -45,7 +45,7 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                sh "sed -i 's,$DOCKER_IMAGE_NAME:$BUILD_NUMBER,oesuruoso/train-schedule:$BUILD_NUMBER,' train-schedule-kube.yaml"
+                sh "sed -i 's,$DOCKER_IMAGE_NAME:$BUILD_NUMBER,oesuruoso/train-schedule:$BUILD_NUMBER,' train-schedule-kube.yml"
                 sh "cat train-schedule-kube.yaml"
                 sh "kubectl --kubeconfig=/home/ec2-user/.kube/config get pods"
                 sh "kubectl --kubeconfig=/home/ec2-user/.kube/config apply -f train-schedule-kube.yaml"
